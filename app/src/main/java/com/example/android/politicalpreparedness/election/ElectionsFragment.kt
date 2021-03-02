@@ -6,32 +6,42 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import com.example.android.politicalpreparedness.R
 import com.example.android.politicalpreparedness.databinding.FragmentElectionBinding
+import com.example.android.politicalpreparedness.election.adapter.ElectionListAdapter
+import com.example.android.politicalpreparedness.election.adapter.ElectionListener
 
-class ElectionsFragment: Fragment() {
+class ElectionsFragment : Fragment() {
 
-    //TODO: Declare ViewModel
+    private val viewModel: ElectionsViewModel by lazy {
+        ViewModelProvider(this, ElectionsViewModelFactory(requireActivity().application)).get(ElectionsViewModel::class.java)
+    }
+
+    private lateinit var electionListAdapter: ElectionListAdapter
 
     override fun onCreateView(inflater: LayoutInflater,
                               container: ViewGroup?,
-                              savedInstanceState: Bundle?): View? {
+                              savedInstanceState: Bundle?): View {
         val binding = FragmentElectionBinding.inflate(inflater)
 
-        //TODO: Add ViewModel values and create ViewModel
+        binding.lifecycleOwner = this
 
-        //TODO: Add binding values
+        binding.viewModel = viewModel
 
-        //TODO: Link elections to voter info
+        electionListAdapter = ElectionListAdapter(ElectionListener {
+            viewModel.addToSavedElections(it)
+        })
 
-        //TODO: Initiate recycler adapters
+        binding.upcomingRecyclerview.adapter = electionListAdapter
 
-        //TODO: Populate recycler adapters
+        viewModel.upcomingElections.observe(viewLifecycleOwner, Observer { upcomingElections ->
+
+                electionListAdapter.submitList(upcomingElections)
+
+        })
 
         return binding.root
-
     }
-
-    //TODO: Refresh adapters when fragment loads
-
 }
