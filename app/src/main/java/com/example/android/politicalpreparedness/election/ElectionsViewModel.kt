@@ -11,9 +11,9 @@ import com.example.android.politicalpreparedness.repository.Repository
 import kotlinx.coroutines.launch
 import java.lang.Exception
 
-class ElectionsViewModel(private val application: Application): ViewModel() {
+class ElectionsViewModel(application: Application) : ViewModel() {
 
-    private val repository = Repository()
+    private val repository = Repository(application)
 
     private val _upcomingElections = MutableLiveData<List<Election>>()
     val upcomingElections: LiveData<List<Election>>
@@ -39,8 +39,4 @@ class ElectionsViewModel(private val application: Application): ViewModel() {
             }
         }
     }
-
-    fun addToSavedElections(election: Election) {
-        Log.i("ElectionViewModels", "Adding to saved elections")
-    }
- }
+}
