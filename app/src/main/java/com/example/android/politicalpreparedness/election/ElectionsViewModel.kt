@@ -2,10 +2,7 @@ package com.example.android.politicalpreparedness.election
 
 import android.app.Application
 import android.util.Log
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
+import androidx.lifecycle.*
 import com.example.android.politicalpreparedness.network.models.Election
 import com.example.android.politicalpreparedness.repository.Repository
 import kotlinx.coroutines.launch
@@ -19,11 +16,11 @@ class ElectionsViewModel(application: Application) : ViewModel() {
     val upcomingElections: LiveData<List<Election>>
         get() = _upcomingElections
 
-    //TODO: Create live data val for saved elections
+    private val _status = MutableLiveData<ApiStatus>()
+    val status: LiveData<ApiStatus>
+        get() = _status
 
-    //TODO: Create val and functions to populate live data for upcoming elections from the API and saved elections from local database
-
-    //TODO: Create functions to navigate to saved or upcoming election voter info
+    val savedElections = repository.savedElections
 
     init {
         fetchUpcomingElection()
@@ -32,10 +29,13 @@ class ElectionsViewModel(application: Application) : ViewModel() {
     private fun fetchUpcomingElection() {
         viewModelScope.launch {
             try {
+                _status.value = ApiStatus.LOADING
                 _upcomingElections.value = repository.fetchUpcomingElections()
+                _status.value = ApiStatus.DONE
             } catch (e: Exception) {
                 Log.i("ElectionsFragment", e.toString())
                 _upcomingElections.value = emptyList()
+                _status.value = ApiStatus.ERROR
             }
         }
     }

@@ -20,8 +20,6 @@ class ElectionsFragment : Fragment() {
         ViewModelProvider(this, ElectionsViewModelFactory(requireActivity().application)).get(ElectionsViewModel::class.java)
     }
 
-    private lateinit var electionListAdapter: ElectionListAdapter
-
     override fun onCreateView(inflater: LayoutInflater,
                               container: ViewGroup?,
                               savedInstanceState: Bundle?): View {
@@ -31,18 +29,14 @@ class ElectionsFragment : Fragment() {
 
         binding.viewModel = viewModel
 
-        electionListAdapter = ElectionListAdapter(ElectionListener {
+        binding.upcomingRecyclerview.adapter = ElectionListAdapter(ElectionListener {
             findNavController().navigate(ElectionsFragmentDirections
                     .actionElectionsFragmentToVoterInfoFragment(it.id, it.division))
         })
 
-        binding.upcomingRecyclerview.adapter = electionListAdapter
-
-        viewModel.upcomingElections.observe(viewLifecycleOwner, Observer { upcomingElections ->
-            upcomingElections?.apply {
-                electionListAdapter.submitList(upcomingElections)
-            }
-
+        binding.savedRecyclerview.adapter = ElectionListAdapter(ElectionListener {
+            findNavController().navigate(ElectionsFragmentDirections
+                    .actionElectionsFragmentToVoterInfoFragment(it.id, it.division))
         })
 
         return binding.root

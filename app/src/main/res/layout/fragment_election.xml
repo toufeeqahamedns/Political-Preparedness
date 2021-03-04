@@ -16,6 +16,15 @@
         android:layout_height="match_parent"
         tools:context="com.example.android.politicalpreparedness.MainActivity">
 
+        <ProgressBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            apiStatus="@{viewModel.status}"
+            app:layout_constraintBottom_toBottomOf="@id/upcoming_recyclerview"
+            app:layout_constraintEnd_toEndOf="@id/upcoming_recyclerview"
+            app:layout_constraintStart_toStartOf="@id/upcoming_recyclerview"
+            app:layout_constraintTop_toTopOf="@id/upcoming_recyclerview" />
+
         <TextView
             android:id="@+id/upcoming_label"
             android:layout_width="0dp"
@@ -40,6 +49,7 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_marginStart="8dp"
+            listData="@{viewModel.upcomingElections}"
             android:layout_marginEnd="8dp"
             android:layout_marginBottom="8dp"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
@@ -80,6 +90,7 @@
             android:id="@+id/saved_recyclerview"
             android:layout_width="match_parent"
             android:layout_height="0dp"
+            listData="@{viewModel.savedElections}"
             android:layout_marginStart="8dp"
             android:layout_marginEnd="8dp"
             android:layout_marginBottom="8dp"

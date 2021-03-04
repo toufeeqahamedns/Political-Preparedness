@@ -19,7 +19,6 @@ class ElectionListAdapter(private val clickListener: ElectionListener) : ListAda
     }
 }
 
-//TODO: Create ElectionViewHolder
 class ElectionViewHolder(private val electionListItemViewBinding: ElectionListItemBinding) :
         RecyclerView.ViewHolder(electionListItemViewBinding.root) {
 

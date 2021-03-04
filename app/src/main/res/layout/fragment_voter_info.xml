@@ -3,8 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <!-- TODO: Add data binding node for Voter Info ViewModel -->
     <data>
+        <import type="android.view.View"/>
 
         <variable
             name="viewModel"
@@ -14,7 +14,17 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context="com.example.android.politicalpreparedness.MainActivity">
+        android:visibility="@{viewModel.voterInfo == null ? View.GONE : View.VISIBLE}">
+
+        <ProgressBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            apiStatus="@{viewModel.status}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/election_name"
@@ -88,7 +98,6 @@
             app:layout_constraintStart_toStartOf="@id/election_date"
             app:layout_constraintTop_toBottomOf="@id/state_correspondence_header" />
 
-        <!-- TODO: Add button to save election to Room -->
         <Button
             android:id="@+id/follow_button"
             android:layout_width="match_parent"
@@ -98,10 +107,13 @@
             android:layout_marginBottom="8dp"
             android:background="@color/colorPrimaryDark"
             android:onClick="@{() -> viewModel.followElection()}"
-            android:text="@{viewModel.isSavedElection ? @string/follow_election : @string/unfollow_election}"
+            android:text="@{viewModel.isSavedElection ? @string/unfollow_election : @string/follow_election}"
+            android:textColor="@color/white"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+
 </layout>
