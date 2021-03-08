@@ -9,9 +9,9 @@ import com.example.android.politicalpreparedness.network.jsonadapter.ElectionAda
 import com.example.android.politicalpreparedness.network.models.Election
 
 @BindingAdapter("listData")
-fun bindDataToRecyclerView(recyclerView: RecyclerView, asteroid: List<Election>?) {
+fun bindDataToRecyclerView(recyclerView: RecyclerView, elections: List<Election>?) {
     val adapter = recyclerView.adapter as ElectionListAdapter
-    adapter.submitList(asteroid)
+    adapter.submitList(elections)
 }
 
 @BindingAdapter("apiStatus")

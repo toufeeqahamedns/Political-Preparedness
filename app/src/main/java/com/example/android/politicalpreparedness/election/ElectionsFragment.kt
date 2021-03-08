@@ -17,7 +17,8 @@ import com.example.android.politicalpreparedness.election.adapter.ElectionListen
 class ElectionsFragment : Fragment() {
 
     private val viewModel: ElectionsViewModel by lazy {
-        ViewModelProvider(this, ElectionsViewModelFactory(requireActivity().application)).get(ElectionsViewModel::class.java)
+        ViewModelProvider(this, ElectionsViewModelFactory(requireActivity().application))
+                .get(ElectionsViewModel::class.java)
     }
 
     override fun onCreateView(inflater: LayoutInflater,

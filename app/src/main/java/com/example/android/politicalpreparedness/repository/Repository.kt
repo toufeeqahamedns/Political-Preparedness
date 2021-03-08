@@ -1,11 +1,12 @@
 package com.example.android.politicalpreparedness.repository
 
 import android.app.Application
-import androidx.lifecycle.LiveData
 import com.example.android.politicalpreparedness.database.ElectionDao
 import com.example.android.politicalpreparedness.database.ElectionDatabase
 import com.example.android.politicalpreparedness.network.CivicsApi
+import com.example.android.politicalpreparedness.network.models.Address
 import com.example.android.politicalpreparedness.network.models.Election
+import com.example.android.politicalpreparedness.network.models.RepresentativeResponse
 import com.example.android.politicalpreparedness.network.models.VoterInfoResponse
 
 class Repository(application: Application) {
@@ -32,5 +33,9 @@ class Repository(application: Application) {
 
     suspend fun saveElection(election: Election) {
         electionDao.saveElection(election)
+    }
+
+    suspend fun getRepresentatives(address: Address): RepresentativeResponse {
+        return CivicsApi.retrofitService.getRepresentatives(address, true, null, null)
     }
 }
