@@ -45,7 +45,6 @@ interface CivicsApiService {
             @Query("electionId") electionId: Long,
             @Query("officialOnly") officialOnly: Boolean): VoterInfoResponse
 
-    //TODO: Add representatives API Call
     @GET("representatives")
     suspend fun getRepresentatives(
             @Query("address") address: Address,

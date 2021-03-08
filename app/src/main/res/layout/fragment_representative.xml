@@ -29,9 +29,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/representative_search"
-                android:textColor="@color/colorPrimary"
-                android:textSize="24sp"
-                android:textStyle="bold"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Heading2"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -93,6 +91,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
                 android:background="@color/colorPrimary"
+                android:textColor="@color/white"
                 android:onClick="@{() -> viewModel.getRepresentativesFromAddress()}"
                 android:text="@string/find_representative"
                 app:layout_constraintBottom_toTopOf="@+id/button_location"
@@ -106,6 +105,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
                 android:background="@color/colorPrimary"
+                android:textColor="@color/white"
                 android:text="@string/use_my_location"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -121,9 +121,7 @@
             android:layout_marginStart="@dimen/normal_margin"
             android:layout_marginTop="@dimen/normal_margin"
             android:text="@string/my_representatives"
-            android:textColor="@color/colorPrimary"
-            android:textSize="24sp"
-            android:textStyle="bold"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Heading2"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/representative_form_layout" />
 
