@@ -6,10 +6,10 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.android.politicalpreparedness.election.ApiStatus
 import com.example.android.politicalpreparedness.network.models.Address
+import com.example.android.politicalpreparedness.network.models.Representative
 import com.example.android.politicalpreparedness.repository.Repository
-import com.example.android.politicalpreparedness.representative.model.Representative
+import com.example.android.politicalpreparedness.util.ApiStatus
 import kotlinx.coroutines.launch
 
 class RepresentativeViewModel(application: Application) : ViewModel() {

@@ -5,6 +5,7 @@ import android.util.Log
 import androidx.lifecycle.*
 import com.example.android.politicalpreparedness.network.models.Election
 import com.example.android.politicalpreparedness.repository.Repository
+import com.example.android.politicalpreparedness.util.ApiStatus
 import kotlinx.coroutines.launch
 import java.lang.Exception
 

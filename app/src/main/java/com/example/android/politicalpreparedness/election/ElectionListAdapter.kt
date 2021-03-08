@@ -1,4 +1,4 @@
-package com.example.android.politicalpreparedness.election.adapter
+package com.example.android.politicalpreparedness.election
 
 import android.view.LayoutInflater
 import android.view.ViewGroup

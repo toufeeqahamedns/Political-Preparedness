@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="viewModel"
             type="com.example.android.politicalpreparedness.representative.RepresentativeViewModel" />
@@ -91,7 +93,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
                 android:background="@color/colorPrimary"
-                android:onClick="@{() -> viewModel.getRepresentatives()}"
+                android:onClick="@{() -> viewModel.getRepresentativesFromAddress()}"
                 android:text="@string/find_representative"
                 app:layout_constraintBottom_toTopOf="@+id/button_location"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -116,14 +118,22 @@
             android:id="@+id/representative_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/normal_margin"
+            android:layout_marginTop="@dimen/normal_margin"
             android:text="@string/my_representatives"
+            android:textColor="@color/colorPrimary"
+            android:textSize="24sp"
+            android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/representative_form_layout" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/representatives_recycler_view"
+            representativeList="@{viewModel.representatives}"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
+            android:layout_marginStart="@dimen/normal_margin"
+            android:layout_marginTop="@dimen/normal_margin"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -131,5 +141,4 @@
             app:layout_constraintTop_toBottomOf="@id/representative_title" />
 
     </androidx.constraintlayout.motion.widget.MotionLayout>
-
 </layout>

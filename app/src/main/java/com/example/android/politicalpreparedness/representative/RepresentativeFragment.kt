@@ -17,7 +17,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.example.android.politicalpreparedness.databinding.FragmentRepresentativeBinding
 import com.example.android.politicalpreparedness.network.models.Address
-import com.example.android.politicalpreparedness.representative.model.Representative
+import com.example.android.politicalpreparedness.network.models.Representative
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
 import com.google.android.material.snackbar.Snackbar
@@ -47,6 +47,8 @@ class RepresentativeFragment : Fragment() {
         binding.viewModel = viewModel
 
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(requireActivity())
+
+        binding.representativesRecyclerView.adapter = RepresentativeListAdapter()
 
         binding.buttonLocation.setOnClickListener {
             hideKeyboard()

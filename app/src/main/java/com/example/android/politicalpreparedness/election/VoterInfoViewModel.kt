@@ -9,6 +9,7 @@ import androidx.lifecycle.viewModelScope
 import com.example.android.politicalpreparedness.network.models.Division
 import com.example.android.politicalpreparedness.network.models.VoterInfoResponse
 import com.example.android.politicalpreparedness.repository.Repository
+import com.example.android.politicalpreparedness.util.ApiStatus
 import kotlinx.coroutines.launch
 
 class VoterInfoViewModel(private val application: Application) : ViewModel() {

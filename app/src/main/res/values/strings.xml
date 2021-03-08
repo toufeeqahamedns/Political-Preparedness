@@ -18,5 +18,6 @@
     <string name="address_line_2">Address Line 2</string>
     <string name="representative_search">Representative Search</string>
     <string name="address_line_1">Address Line 1</string>
+    <string name="representative_image">Representative image</string>
 
 </resources>
